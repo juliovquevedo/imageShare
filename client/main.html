@@ -4,23 +4,42 @@
 
 <body>
   <h1>Welcome to the Quevedo Family album!</h1>
-  <div class="container">
-    {{> images}}
+  <div class="container left">
+      {{> images}}
+  </div>
+  <div class="container right">
+      {{> allpics}}
   </div>
 </body>
 
 <template name="images">
-  <div class="row">
-    {{#each images}}
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="thumbnail">
-        <IMG class="js-image" alt="{{img_alt}}" src="{{img_src}}">
-        <div class="caption">
-          <h3>{{img_alt}}</h3>
-          <p>description of the image</p>
+    <div class="row">
+        {{#each images}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <IMG class="js-image" alt="{{img_alt}}" src="{{img_src}}">
+                <div class="caption">
+                    <h4>{{img_alt}}</h4>
+                    <p>description of the image</p>
+                </div>
+            </div>
         </div>
-      </div>
+        {{/each}}
     </div>
-  {{/each}}
-  </div>
+</template>
+
+<template name="allpics">
+    <div class="row">
+        {{# each images}}
+            <div class="col-xs-12 col-sm-6">
+                <div class="thumbnail">
+                    <IMG class="js-image" alt="{{img_alt}}" src="{{img_src}}">
+                    <div class="caption">
+                        <h3>{{img_alt}}</h3>
+                        <p>description of the image</p>
+                    </div>
+                </div>
+            </div>
+        {{/ each}}
+    </div>
 </template>

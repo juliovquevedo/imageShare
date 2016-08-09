@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+.left {
+	float: left;
+	width: 70%;
+}
+
+.right {
+	float: right;
+	width: 30%;
+}
