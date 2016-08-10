@@ -1,10 +1,19 @@
 /* CSS declarations go here */
 .left {
 	float: left;
-	width: 70%;
+	width: 80%;
 }
 
 .right {
 	float: right;
-	width: 30%;
+	width: 20%;
+}
+
+.thumbnail {
+	min-height: 400px;
+	max-height: 400px;
+}
+
+h1 {
+	text-align: center;
 }
