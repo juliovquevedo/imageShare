@@ -1,17 +1,22 @@
 /* CSS declarations go here */
 .left {
 	float: left;
-	width: 80%;
+	width: 79%;
 }
 
 .right {
 	float: right;
-	width: 20%;
+	width: 19%;
 }
 
 .thumbnail {
 	min-height: 400px;
 	max-height: 400px;
+}
+
+.container.right.small-pic {
+	min-height: 200px;
+	max-height: 200px;
 }
 
 h1 {
