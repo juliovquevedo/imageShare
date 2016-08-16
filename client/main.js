@@ -1,5 +1,6 @@
-import './main.js';
-import { Pictures } from './main.js';
+//import { Pictures } from '../server/main.js';
+//import { Template } from 'meteor/templating';
+//import './main.html';
 
 var img_data = [
 {
@@ -31,7 +32,7 @@ var img_data = [
 	img_alt:"Eric",
 	description: "Future physicist",
 	place: "picBasket"
-},
+}
 ];
 
 Template.album.onRendered(function() {

@@ -7,24 +7,24 @@ Meteor.startup(() => {
   console.log("I am the server");
   console.log(Pictures.find().count());
 
-  Meteor.startup(function() {
+  /*Meteor.startup(function() {
 		Pictures.remove({});
-	});
+	});*/
 
 	Pictures.insert({
+		img_src:'../robert.jpg',
+		img_alt:'Robert',
+		description: 'Pianist and Soccer Player',
+		place: 'album'
+	});
+	Pictures.insert({
+		img_src:'/robert.jpg',
+		img_alt:'Robert',
+		description: 'Pianist and Soccer Player',
+		place: 'album'
+	});
+	Pictures.insert({
 		img_src:'./robert.jpg',
-		img_alt:'Robert',
-		description: 'Pianist and Soccer Player',
-		place: 'album'
-	});
-	Pictures.insert({
-		img_src:'robert.jpg',
-		img_alt:'Robert',
-		description: 'Pianist and Soccer Player',
-		place: 'album'
-	});
-	Pictures.insert({
-		img_src:'robert.jpg',
 		img_alt:'Robert',
 		description: 'Pianist and Soccer Player',
 		place: 'album'
