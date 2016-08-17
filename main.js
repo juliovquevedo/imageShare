@@ -1,8 +1,7 @@
 Pictures = new Mongo.Collection('pictures');
 
 if(Meteor.isClient) {
-
-Template.album.onRendered(function() {
+	Template.album.onRendered(function() {
 		var templateInstance = this;
 
 		templateInstance.$('#album').droppable({
@@ -73,6 +72,14 @@ Template.album.onRendered(function() {
 		'mouseleave .js-image': function(event) {
 			$(event.target).css("width", "100%");
 		}*/
+	});
+
+	Template.picBasket.events({
+		'click .js-delete-image': function(event) {
+			var image_id = this._id;
+			console.log(image_id);
+			Pictures.remove({"_id": image_id});
+		}
 	});
 }
 

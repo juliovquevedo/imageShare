@@ -14,9 +14,13 @@
 	max-height: 400px;
 }
 
-.container.right.small-pic {
-	min-height: 200px;
-	max-height: 200px;
+.small {
+	min-height: 120px;
+	max-height: 120px;
+}
+
+.delete {
+	align: center;
 }
 
 #picBasket {
