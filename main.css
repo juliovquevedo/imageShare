@@ -19,6 +19,18 @@
 	max-height: 200px;
 }
 
+#picBasket {
+	min-height: 400px;
+}
+
+#album {
+	min-height: 400px;
+}
+
 h1 {
+	text-align: center;
+}
+
+h2 {
 	text-align: center;
 }
