@@ -1,39 +1,6 @@
-//import { Pictures } from '../server/main.js';
-//import { Template } from 'meteor/templating';
-//import './main.html';
+Pictures = new Mongo.Collection('pictures');
 
-var img_data = [
-{
-	img_src:"robert.jpg",
-	img_alt:"Robert",
-	description: "Pianist and Soccer Player",
-	place: "album"
-},
-{
-	img_src:"john3.jpeg",
-	img_alt:"John",
-	description: "Soccer Player extraordinaire",
-	place: "album"
-},
-{
-	img_src:"matthew.jpeg",
-	img_alt:"Matthew",
-	description: "Math magician",
-	place: "picBasket"
-},
-{
-	img_src:"brooke.jpg",
-	img_alt:"Brooke",
-	description: "The princess",
-	place: "picBasket"
-},
-{
-	img_src:"eric.jpeg",
-	img_alt:"Eric",
-	description: "Future physicist",
-	place: "picBasket"
-}
-];
+if(Meteor.isClient) {
 
 Template.album.onRendered(function() {
 		var templateInstance = this;
@@ -80,20 +47,20 @@ Template.album.onRendered(function() {
 		});
 	});
 
-	Template.album.helpers({pictures:img_data
-		/*pictures: function() {
+	Template.album.helpers({
+		pictures: function() {
 			return Pictures.find({
 				place: 'album'
 			});
-		}*/
+		}
 	});
 
-	Template.picBasket.helpers({pictures:img_data
-		/*pictures: function() {
+	Template.picBasket.helpers({
+		pictures: function() {
 			return Pictures.find({
 				place: 'picBasket'
 			});
-		}*/
+		}
 	});
 
 	Template.album.events({
@@ -107,3 +74,45 @@ Template.album.onRendered(function() {
 			$(event.target).css("width", "100%");
 		}*/
 	});
+}
+
+if(Meteor.isServer) {
+	Meteor.startup(function() {
+		Pictures.remove({});
+
+		Pictures.insert({
+			img_src:"robert.jpg",
+			img_alt:"Robert",
+			description: "Pianist and Soccer Player",
+			place: "album"
+		});
+
+		Pictures.insert({
+			img_src:"john3.jpeg",
+			img_alt:"John",
+			description: "Soccer Player extraordinaire",
+			place: "album"
+		});
+
+		Pictures.insert({
+			img_src:"matthew.jpeg",
+			img_alt:"Matthew",
+			description: "Math magician",
+			place: "picBasket"
+		});
+
+		Pictures.insert({
+			img_src:"brooke.jpg",
+			img_alt:"Brooke",
+			description: "The princess",
+			place: "picBasket"
+		});
+
+		Pictures.insert({
+			img_src:"eric.jpeg",
+			img_alt:"Eric",
+			description: "Future physicist",
+			place: "picBasket"
+		});
+	})
+}
