@@ -2,11 +2,13 @@
 .left {
 	float: left;
 	width: 79%;
+	border: solid 1px;
 }
 
 .right {
 	float: right;
 	width: 19%;
+	border: solid 1px;
 }
 
 .thumbnail {

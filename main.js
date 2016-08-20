@@ -77,8 +77,9 @@ if(Meteor.isClient) {
 	Template.picBasket.events({
 		'click .js-delete-image': function(event) {
 			var image_id = this._id;
-			console.log(image_id);
-			Pictures.remove({"_id": image_id});
+			$("#"+image_id).hide('slow', function() {
+				Pictures.remove({"_id": image_id});
+			})
 		}
 	});
 }

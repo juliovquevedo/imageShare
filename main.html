@@ -24,6 +24,7 @@
                 <div class="caption">
                     <h4>{{img_alt}}</h4>
                     <p>{{description}}</p>
+                    
                 </div>
             </div>
         </div>
@@ -34,11 +35,11 @@
 <template name="picBasket">
     <div class="row picBasket" id="picBasket">
         {{# each pictures}}
-            <div class="col-xs-12 col-lg-6">
-                <div class="small thumbnail js-delete-image">
+            <div class="col-xs-12 col-lg-6" id="{{_id}}">
+                <div class="small thumbnail">
                     {{> allImages}}
                     <div class="caption">
-                        <button class="btn btn-danger delete">delete</button>  
+                        <button class="js-delete-image btn btn-danger delete btn-xs">delete</button>  
                     </div>
                 </div>
             </div>
