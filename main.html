@@ -16,11 +16,27 @@
 </body>
 
 <template name="addPictureForm">
-    <form class="js-add-picture">
-        <input type="text" name="img_src" /><br />
-        <input type="text" name="img_alt" />
-        <button class="btn btn-success">save</button>
-    </form>
+    <div class="modal fade" id="addPictureForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h4>Add picture</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form class="js-add-picture">
+                        <input type="text" name="img_src" placeholder="enter url" /><br/>
+                        <input type="text" name="img_alt" placeholder="enter caption" />
+                        <button class="btn btn-success">save</button>
+                    </form>
+               </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" data-dismiss="modal">cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <template name="album">
@@ -42,17 +58,20 @@
 
 <template name="picBasket">
     <div class="row picBasket" id="picBasket">
-        {{> addPictureForm}}
-        {{# each pictures}}
-            <div class="col-xs-12 col-lg-6" id="{{_id}}">
-                <div class="small thumbnail">
-                    {{> allImages}}
-                <!--    <div class="caption">-->
-                        <button class="js-delete-image btn btn-danger delete btn-xs btn-block">delete</button>  
-                <!--    </div>-->
+        <button class="btn btn-primary btn-block btn-xs js-showAddPictureForm">
+                add image
+            </button>
+            {{> addPictureForm}}
+            {{# each pictures}}
+                <div class="col-xs-12 col-lg-6" id="{{_id}}">
+                    <div class="small thumbnail">
+                        {{> allImages}}
+                    <!--    <div class="caption">-->
+                            <button class="js-delete-image btn btn-danger delete btn-xs btn-block">delete</button>  
+                    <!--    </div>-->
+                    </div>
                 </div>
-            </div>
-        {{/ each}}
+            {{/ each}}
     </div>
 </template>
 

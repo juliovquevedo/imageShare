@@ -59,6 +59,7 @@ if(Meteor.isClient) {
 				createdOn: new Date(),
 				place: "picBasket"
 			});
+			$('#addPictureForm').modal('hide');
 			return false;
 		}
 	});
@@ -97,13 +98,17 @@ if(Meteor.isClient) {
 			$("#"+image_id).hide('slow', function() {
 				Pictures.remove({"_id": image_id});
 			})
+		},
+
+		'click .js-showAddPictureForm': function(event) {
+			$('#addPictureForm').modal('show');
 		}
 	});
 }
 
 if(Meteor.isServer) {
 	Meteor.startup(function() {
-		
+
 	})
 
 }
