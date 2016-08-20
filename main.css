@@ -21,8 +21,8 @@
 	max-height: 120px;
 }
 
-.delete {
-	align: center;
+.caption {
+	text-align: center;
 }
 
 #picBasket {
