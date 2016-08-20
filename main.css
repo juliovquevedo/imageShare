@@ -25,6 +25,10 @@
 	text-align: center;
 }
 
+.js-delete-image {
+	margin-top: 2px;
+}
+
 #picBasket {
 	min-height: 400px;
 }
