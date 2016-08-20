@@ -46,6 +46,23 @@ if(Meteor.isClient) {
 		});
 	});
 
+	Template.addPictureForm.events({
+		'submit .js-add-picture': function(event) {
+			var img_src, img_alt;
+			img_src = event.target.img_src.value;
+			img_alt = event.target.img_alt.value;
+			
+
+			Pictures.insert({
+				img_src: img_src,
+				img_alt: img_alt,
+				createdOn: new Date(),
+				place: "picBasket"
+			});
+			return false;
+		}
+	});
+
 	Template.album.helpers({
 		pictures: function() {
 			return Pictures.find({
@@ -86,41 +103,7 @@ if(Meteor.isClient) {
 
 if(Meteor.isServer) {
 	Meteor.startup(function() {
-		Pictures.remove({});
-
-		Pictures.insert({
-			img_src:"robert.jpg",
-			img_alt:"Robert",
-			description: "Pianist and Soccer Player",
-			place: "album"
-		});
-
-		Pictures.insert({
-			img_src:"john3.jpeg",
-			img_alt:"John",
-			description: "Soccer Player extraordinaire",
-			place: "album"
-		});
-
-		Pictures.insert({
-			img_src:"matthew.jpeg",
-			img_alt:"Matthew",
-			description: "Math magician",
-			place: "picBasket"
-		});
-
-		Pictures.insert({
-			img_src:"brooke.jpg",
-			img_alt:"Brooke",
-			description: "The princess",
-			place: "picBasket"
-		});
-
-		Pictures.insert({
-			img_src:"eric.jpeg",
-			img_alt:"Eric",
-			description: "Future physicist",
-			place: "picBasket"
-		});
+		
 	})
+
 }
