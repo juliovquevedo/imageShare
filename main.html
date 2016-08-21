@@ -3,16 +3,21 @@
 </head>
 
 <body>
-  <div class="container">
-      <div class="container left">
-          <h1>Welcome to the Quevedo Family album!</h1>
-          {{> album}}
-      </div>
-      <div class="container right">
-          <h2>All Pictures</h2>
-          {{> picBasket}}
-      </div>
-      </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            {{> loginButtons}}
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container left">
+            <h1>Welcome to the Quevedo Family album!</h1>
+            {{> album}}
+        </div>
+        <div class="container right">
+            <h2>All Pictures</h2>
+            {{> picBasket}}
+        </div>
+   </div>
 </body>
 
 <template name="addPictureForm">
