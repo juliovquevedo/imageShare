@@ -1,6 +1,10 @@
 Pictures = new Mongo.Collection('pictures');
 
 if(Meteor.isClient) {
+	Accounts.ui.config({
+		passwordSignupFields: "USERNAME_AND_EMAIL"
+	});
+
 	Template.album.onRendered(function() {
 		var templateInstance = this;
 
@@ -78,6 +82,17 @@ if(Meteor.isClient) {
 				place: 'picBasket'
 			});
 		}
+	});
+
+	Template.body.helpers({
+		username: function() {
+			if (Meteor.user()) {
+				return Meteor.user().emails[0].address;
+			}
+			else {
+				return "there";
+			}
+		}	
 	});
 
 	Template.album.events({
