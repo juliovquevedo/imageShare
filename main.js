@@ -80,7 +80,8 @@ if(Meteor.isClient) {
 	Template.picBasket.helpers({
 		pictures: function() {
 			return Pictures.find({
-				place: 'picBasket'
+				place: 'picBasket'},
+				{sort:{createdOn: -1}
 			});
 		}
 	});
