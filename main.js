@@ -33,7 +33,8 @@ if(Meteor.isClient) {
 				};
 				var changes = {
 					$set: {
-						place: 'picBasket'
+						place: 'picBasket',
+						createdOn: new Date()
 					}
 				};
 				Pictures.update(query, changes);
@@ -87,7 +88,8 @@ if(Meteor.isClient) {
 	Template.body.helpers({
 		username: function() {
 			if (Meteor.user()) {
-				return Meteor.user().emails[0].address;
+				return Meteor.user().username;
+				//return Meteor.user().emails[0].address;
 			}
 			else {
 				return "there";

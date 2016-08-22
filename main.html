@@ -10,9 +10,9 @@
     </nav>
     <div class="container">
         <div class="container left">
-            
+            {{#if currentUser}}
                 <h1>Hi {{username}}</h1>
-            
+            {{/if}}
             <h1>Welcome to the Quevedo Family album!</h1>
             {{> album}}
         </div>
@@ -56,7 +56,6 @@
                 <div class="caption">
                     <h4>{{img_alt}}</h4>
                     <p>{{description}}</p>
-                    
                 </div>
             </div>
         </div>
@@ -66,20 +65,25 @@
 
 <template name="picBasket">
     <div class="row picBasket" id="picBasket">
-        <button class="btn btn-primary btn-block btn-xs js-showAddPictureForm">
+        <div data-spy="scroll" style="height:400px; overflow-y:scroll; position:relative;">
+            {{#if currentUser}}
+            <button class="btn btn-primary btn-block btn-xs js-showAddPictureForm">
                 add image
             </button>
+            {{/if}}
+                
             {{> addPictureForm}}
             {{# each pictures}}
                 <div class="col-xs-12 col-lg-6" id="{{_id}}">
                     <div class="small thumbnail">
                         {{> allImages}}
-                    <!--    <div class="caption">-->
-                            <button class="js-delete-image btn btn-danger delete btn-xs btn-block">delete</button>  
-                    <!--    </div>-->
+                        <!--    <div class="caption">-->
+                        <button class="js-delete-image btn btn-danger delete btn-xs btn-block">delete</button>  
+                        <!--    </div>-->
                     </div>
                 </div>
             {{/ each}}
+        </div>
     </div>
 </template>
 
