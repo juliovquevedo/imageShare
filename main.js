@@ -15,7 +15,8 @@ if(Meteor.isClient) {
 				};
 				var changes = {
 					$set: {
-						place: 'album'
+						place: 'album',
+						createdOn: new Date()
 					}
 				};
 				Pictures.update(query, changes);
@@ -56,14 +57,19 @@ if(Meteor.isClient) {
 			var img_src, img_alt;
 			img_src = event.target.img_src.value;
 			img_alt = event.target.img_alt.value;
-			
 
-			Pictures.insert({
-				img_src: img_src,
-				img_alt: img_alt,
-				createdOn: new Date(),
-				place: "picBasket"
-			});
+			if(Meteor.user()) {
+				Pictures.insert({
+					img_src: img_src,
+					img_alt: img_alt,
+					createdOn: new Date(),
+					place: "picBasket",
+					createdBy: Meteor.user().username
+				});
+			}
+
+			console.log(Meteor.user().place);
+
 			$('#addPictureForm').modal('hide');
 			return false;
 		}
@@ -71,17 +77,18 @@ if(Meteor.isClient) {
 
 	Template.album.helpers({
 		pictures: function() {
-			return Pictures.find({
-				place: 'album'
+			return Pictures.find(
+				{place: 'album'},
+				{sort: {createdOn: -1}
 			});
 		}
 	});
 
 	Template.picBasket.helpers({
 		pictures: function() {
-			return Pictures.find({
-				place: 'picBasket'},
-				{sort:{createdOn: -1}
+			return Pictures.find(
+				{place: 'picBasket'},
+				{sort: {createdOn: -1}
 			});
 		}
 	});
@@ -100,7 +107,7 @@ if(Meteor.isClient) {
 
 	Template.album.events({
 		'click .js-image': function(event) {
-			$(event.target).css("width", "50px");
+			$(event.target).css("width", "150px");
 		}/*,
 		'mouseenter .js-image': function(event) {
 			$(event.target).css("width", "100px");
