@@ -1,6 +1,7 @@
 Pictures = new Mongo.Collection('pictures');
 
 if(Meteor.isClient) {
+
 	Accounts.ui.config({
 		passwordSignupFields: "USERNAME_AND_EMAIL"
 	});
@@ -68,8 +69,6 @@ if(Meteor.isClient) {
 				});
 			}
 
-			console.log(Meteor.user().place);
-
 			$('#addPictureForm').modal('hide');
 			return false;
 		}
@@ -77,10 +76,26 @@ if(Meteor.isClient) {
 
 	Template.album.helpers({
 		pictures: function() {
-			return Pictures.find(
-				{place: 'album'},
-				{sort: {createdOn: -1}
-			});
+			if(Session.get('userFilter')) {
+				return Pictures.find(
+					{createdBy: Session.get('userFilter')},
+					{place: 'album'},
+					{sort: {createdOn: -1}}
+				);
+			} else {
+				return Pictures.find(
+					{place: 'album'},
+					{sort: {createdOn: -1}}
+				);
+			};
+		},
+
+		filtering_pictures: function() {
+			if(Session.get('userFilter')) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	});
 
@@ -108,7 +123,16 @@ if(Meteor.isClient) {
 	Template.album.events({
 		'click .js-image': function(event) {
 			$(event.target).css("width", "150px");
-		}/*,
+		},
+
+		'click .js-set-picture-filter': function(event) {
+			Session.set('userFilter', this.createdBy);
+		},
+
+		'click .js-remove-picture-filter': function(event) {
+			Session.set('userFilter', undefined);
+		}
+		/*,
 		'mouseenter .js-image': function(event) {
 			$(event.target).css("width", "100px");
 		},
