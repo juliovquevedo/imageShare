@@ -96,6 +96,14 @@ if(Meteor.isClient) {
 			} else {
 				return false;
 			}
+		},
+
+		getFilterUser: function() {
+			if(Session.get('userFilter')) {
+				return Meteor.user().username;
+			} else {
+				return false;
+			}
 		}
 	});
 
